@@ -2,6 +2,7 @@ import { TOKEN_NAME } from "@/constants";
 import axios from "axios";
 import { cookies } from "next/headers";
 import SelectLocations from "./_components/SelectLocation";
+import LocationCard from "./_components/LocationCard";
 
 const LocationsPage = async ({
   searchParams,
@@ -32,6 +33,9 @@ const LocationsPage = async ({
             locations={data}
             store={searchParams?.store}
           ></SelectLocations>
+        </div>
+        <div className="w-8/12">
+          <LocationCard store={searchParams.store}></LocationCard>
         </div>
       </div>
     </div>
