@@ -1,5 +1,6 @@
 import deleteLocation from "@/actions/locations/delete";
 import { Button } from "@nextui-org/react";
+import { LuTrash } from "react-icons/lu";
 
 export default function DeleteLocationButton({
   store,
@@ -10,7 +11,7 @@ export default function DeleteLocationButton({
   return (
     <form action={deleteLocation} className="my-4">
       <Button type="submit" name="deleteValue" value={store} color="danger">
-        Borrar tienda
+        <LuTrash size={20}></LuTrash>
       </Button>
     </form>
   );
