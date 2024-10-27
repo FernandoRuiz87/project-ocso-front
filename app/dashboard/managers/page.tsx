@@ -1,4 +1,4 @@
-const ManagersPage = () => {
+const ManagersPage = async () => {
   return null;
 };
 

@@ -13,7 +13,7 @@ export default async function EmployeesLocation({
     headers: { ...authHeaders() },
     next: { tags: ["dashboard:locations:employees"] },
   });
-  const data = await response.json();
+  const data: Employee[] = await response.json();
   return data.map((employee: Employee) => {
     const fullName = employee.employeeName + " " + employee.employeeLastName;
     return (
