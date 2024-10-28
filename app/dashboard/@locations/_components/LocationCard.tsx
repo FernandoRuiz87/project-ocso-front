@@ -39,7 +39,7 @@ export default async function LocationCard({
           width="300"
           height="200"
           loading="lazy"
-          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBdX7XWCoFOxP8N1z-nTEGz4v4mvrPvvFQ
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_API_KEY_MAPS}
             &q=${data.locationLatLng[0]},${data.locationLatLng[1]}`}
         ></iframe>
       </CardBody>
