@@ -37,7 +37,7 @@ export default function ManagerCard({ manager }: { manager: Manager }) {
             width="300"
             height="200"
             loading="lazy"
-            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBdX7XWCoFOxP8N1z-nTEGz4v4mvrPvvFQ&q=${manager.location.locationLatLng[0]},${manager.location.locationLatLng[1]}`}
+            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.NEXT_PUBLIC_API_KEY_MAPS}&q=${manager.location.locationLatLng[0]},${manager.location.locationLatLng[1]}`}
           ></iframe>
         ) : (
           <p className="w-full text-4xl">No tiene tienda</p>
