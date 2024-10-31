@@ -25,7 +25,7 @@ export async function updateLocation(store: string, formData: FormData) {
   const response = await fetch(`${API_URL}/locations/${store}`, {
     method: "PATCH",
     body: JSON.stringify(location),
-    headers: { "content-type": "application/json", ...authHeaders() },
+    headers: { ...authHeaders(), "content-type": "application/json" },
   });
   const { locationId }: Location = await response.json();
   if (response.status == 200) {

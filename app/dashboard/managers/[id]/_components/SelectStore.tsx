@@ -16,6 +16,8 @@ export default function SelectStore({
     .filter((storeId) => storeId != undefined);
   return (
     <Select
+      label="Tienda"
+      name="location"
       defaultSelectedKeys={defaultStore ? [defaultStore] : undefined}
       disabledKeys={disabledStores}
     >
