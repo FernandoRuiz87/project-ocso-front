@@ -8,7 +8,7 @@ export default async function FormCreateProvider() {
       className="bg-orange-400 rounded-md flex flex-col flex-grow-0 gap-2"
     >
       <h1 className="text-2xl text-white font-semibold  text-center">
-        Crear manager
+        Crear proveedor
       </h1>
       <Input
         required={true}
