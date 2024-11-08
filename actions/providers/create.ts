@@ -18,6 +18,6 @@ export default async function createProvider(formData: FormData) {
 
   if (response.status === 201) {
     revalidateTag("dashboard:providers");
-    redirect("/dashboard/managers");
+    redirect("/dashboard/providers");
   }
 }

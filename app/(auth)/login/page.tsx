@@ -20,6 +20,7 @@ export default function LoginPage() {
         method: "POST",
         body: JSON.stringify(authData),
         credentials: "include",
+        headers: { "content-type": "application/json" },
       });
       if (response.status === 201) router.push("/dashboard");
 
