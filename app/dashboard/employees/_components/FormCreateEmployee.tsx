@@ -1,55 +1,48 @@
-import updateEmployee from "@/actions/employees/update";
-import { Employee } from "@/entities";
-import { Button, Input } from "@nextui-org/react";
-import SelectLocation from "../../_components/SelectLocation";
+import createEmployee from "@/actions/employees/create";
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
+import { Button, Input } from "@nextui-org/react";
+import SelectLocation from "./SelectLocation";
 
-export default async function FormUpdateEmployee({
-  employee,
-}: {
-  employee: Employee;
-}) {
+export default async function FormCreateEmployee() {
   const response = await fetch(`${API_URL}/locations`, {
     method: "GET",
     headers: { ...authHeaders(), "Content-Type": "application/json" },
   });
   const locations = await response.json();
-  const { employeeId } = employee;
-  const updateEmployeeById = updateEmployee.bind(null, employeeId);
   return (
     <form
-      action={updateEmployeeById}
+      action={createEmployee}
       className="flex flex-col gap-2 p-8 bg-orange-600 h-fit rounded-md m-2"
     >
       <Input
+        isRequired={true}
         label="Nombre"
         name="employeeName"
-        defaultValue={employee.employeeName}
+        placeholder="Marco"
       />
       <Input
+        isRequired={true}
         label="Apellidos"
         name="employeeLastName"
-        defaultValue={employee.employeeLastName}
+        placeholder="Aurelio"
       />
       <Input
+        isRequired={true}
         label="Correo electrónico"
         name="employeeEmail"
-        defaultValue={employee.employeeEmail}
+        placeholder="marco@example.com"
       />
       <Input
+        isRequired={true}
         label="Num. de teléfono"
         name="employeePhoneNumber"
-        defaultValue={employee.employeePhoneNumber}
+        placeholder="444XXXXXXX"
       />
-      <Input
-        name="employeePhoto"
-        type="file"
-        defaultValue={employee.employeePhoto}
-      />
+      <Input name="employeePhoto" type="file" />
       <SelectLocation stores={locations} />
       <Button type="submit" color="primary">
-        Actualizar datos
+        Crear empleado
       </Button>
     </form>
   );

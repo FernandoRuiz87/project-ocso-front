@@ -1,8 +1,6 @@
 import { API_URL } from "@/constants";
 import { Employee } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
-import EmployeeCard from "../_components/EmployeeCard";
-import { Image } from "@nextui-org/react";
 import FormUpdateEmployee from "./_components/FormUpdateEmployee";
 import EmployeeDataCard from "./_components/EmployeeDataCard";
 

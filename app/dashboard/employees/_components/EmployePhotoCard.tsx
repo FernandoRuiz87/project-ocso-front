@@ -27,7 +27,7 @@ export default function EmployeePhotoCard({
         <Image
           src={employee.employeePhoto}
           className="z-0 object-cover"
-          classNames={{ img: "siz-72" }}
+          classNames={{ img: "size-72" }}
         />
       </CardBody>
       <CardFooter className="absolute bottom-0 py-2 h-14">
