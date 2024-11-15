@@ -1,5 +1,4 @@
 import deleteEmployee from "@/actions/employees/delete";
-import { Employee } from "@/entities";
 import { Button } from "@nextui-org/react";
 import { LuTrash } from "react-icons/lu";
 
