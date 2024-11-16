@@ -7,7 +7,7 @@ export default function SelectStore({
   defaultStore,
 }: {
   stores: Location[];
-  defaultStore: number;
+  defaultStore?: number;
 }) {
   const disabledStores = stores
     .map((store: Location) => {

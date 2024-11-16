@@ -20,6 +20,4 @@ export default async function registerEmployee(
       body: JSON.stringify(data),
     }
   );
-
-  console.log(response.json());
 }

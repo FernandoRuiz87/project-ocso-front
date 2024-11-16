@@ -1,24 +1,25 @@
 "use client";
-import registerEmployee from "@/actions/users/register-employee";
-import { Employee } from "@/entities";
+import updateUser from "@/actions/users/update";
+import { User } from "@/entities";
 import { Button, Input } from "@nextui-org/react";
-import { useState } from "react";
 import { generate } from "generate-password";
+import { useState } from "react";
 import { LuEye } from "react-icons/lu";
 
-export default function FormCreateUserEmployee({
-  employee,
-}: {
-  employee: Employee;
-}) {
+export default function FormUpdateUser({ user }: { user: User }) {
+  const { userId } = user;
   const [password, setPassword] = useState<string>();
   const [visible, setVisible] = useState<boolean>(false);
-  const { employeeId } = employee;
-  const registerEmployeeById = registerEmployee.bind(null, employeeId);
+  const updateUserById = updateUser.bind(null, userId);
+
   return (
-    <form action={registerEmployeeById} className="py-10 flex flex-col gap-2">
-      <h1 className="text-white text-center text-xl">Crear usuario</h1>
-      <Input name="userEmail" label="Correo de usuario" />
+    <form action={updateUserById} className="py-10 flex flex-col gap-2">
+      <h1 className="text-white text-center text-xl">Actualizar usuario</h1>
+      <Input
+        name="userEmail"
+        label="Correo de usuario"
+        defaultValue={user.userEmail}
+      />
       <Input
         type={visible ? "text" : "password"}
         value={password}
@@ -47,7 +48,7 @@ export default function FormCreateUserEmployee({
         Generar Contraseña
       </Button>
       <Button type="submit" color="primary">
-        Crear usuario
+        Actualizar usuario
       </Button>
     </form>
   );

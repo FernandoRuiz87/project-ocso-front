@@ -13,7 +13,6 @@ export default async function createEmployee(formData: FormData) {
     headers: { ...authHeaders() },
     body: formData,
   });
-  console.log(await response.json());
 
   if (response.status == 201) revalidateTag("dashboard:employees");
   return;
