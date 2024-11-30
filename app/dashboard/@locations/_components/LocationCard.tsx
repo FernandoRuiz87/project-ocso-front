@@ -1,6 +1,6 @@
 import { API_URL, TOKEN_NAME } from "@/constants";
 import { Location } from "@/entities";
-import { authHeaders } from "@/helpers/authHeaders";
+import { authHeaders, getUserRoles } from "@/helpers/authHeaders";
 import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 import Link from "next/link";
 
@@ -9,6 +9,8 @@ export default async function LocationCard({
 }: {
   store: string | string[] | undefined;
 }) {
+  const role = getUserRoles();
+
   if (!store) return null;
   const response = await fetch(`${API_URL}/locations/${store}`, {
     method: "GET",
@@ -23,14 +25,18 @@ export default async function LocationCard({
       </CardHeader>
       <Divider></Divider>
       <CardBody className="flex flex-col w-full items-center">
-        <p className="w-full">
-          Manager:{" "}
-          <Link
-            href={{ pathname: `dashboard/managers/${data.manager?.managerId}` }}
-          >
-            <b className="underline"> {data.manager?.managerFullName}</b>
-          </Link>
-        </p>
+        {role.includes("Admin") && ( // Solo los administradores pueden ver el manager
+          <p className="w-full">
+            Manager:
+            <Link
+              href={{
+                pathname: `dashboard/managers/${data.manager?.managerId}`,
+              }}
+            >
+              <b className="underline"> {data.manager?.managerFullName}</b>
+            </Link>
+          </p>
+        )}
         <p className="w-full">
           Direccion: <b>{data.locationAddress}</b>
         </p>

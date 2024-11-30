@@ -3,6 +3,7 @@
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function createManager(formData: FormData) {
   let manager: any = {};
@@ -22,5 +23,8 @@ export default async function createManager(formData: FormData) {
     headers: { ...authHeaders(), "content-type": "application/json" },
   });
 
-  if (response.status === 201) revalidateTag("dashboard:managers");
+  if (response.status === 201) {
+    revalidateTag("dashboard:managers");
+    redirect("/dashboard/managers");
+  }
 }

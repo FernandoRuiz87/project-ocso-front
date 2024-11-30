@@ -1,6 +1,6 @@
 import { API_URL } from "@/constants";
 import { Employee } from "@/entities";
-import { authHeaders } from "@/helpers/authHeaders";
+import { authHeaders, getUserRoles } from "@/helpers/authHeaders";
 import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 
 export default async function EmployeesLocation({
@@ -8,11 +8,16 @@ export default async function EmployeesLocation({
 }: {
   store: string | string[] | undefined;
 }) {
+  const role = getUserRoles();
+
+  if (role.includes("Employee")) return null;
+
   const response = await fetch(`${API_URL}/employees/location/${store}`, {
     method: "GET",
     headers: { ...authHeaders() },
     next: { tags: ["dashboard:locations:employees"] },
   });
+
   const data: Employee[] = await response.json();
   return data.map((employee: Employee) => {
     const fullName = employee.employeeName + " " + employee.employeeLastName;

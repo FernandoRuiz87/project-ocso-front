@@ -3,6 +3,7 @@
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function createProduct(formData: FormData) {
   let product: any = {};
@@ -19,5 +20,8 @@ export default async function createProduct(formData: FormData) {
     headers: { ...authHeaders(), "content-type": "application/json" },
   });
 
-  if (response.status === 201) revalidateTag("dashboard:products");
+  if (response.status === 201) {
+    revalidateTag("dashboard:products");
+    redirect("/dashboard/products");
+  }
 }

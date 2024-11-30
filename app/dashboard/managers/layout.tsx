@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import ManagerCards from "./_components/ManagerCards";
+import { getUserRoles } from "@/helpers/authHeaders";
 
 export default function LayoutManagers({
   children,
@@ -8,6 +9,10 @@ export default function LayoutManagers({
   children: ReactNode;
   count: ReactNode;
 }) {
+  const role = getUserRoles();
+
+  if (!role.includes("Admin"))
+    return "No estas autorizado para ver esta página";
   return (
     <>
       <div className="w-4/12 max-h-[90vh] h-[90vh] overflow-hidden overflow-y-auto">

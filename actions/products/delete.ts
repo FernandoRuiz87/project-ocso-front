@@ -6,7 +6,7 @@ import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 export default async function deleteProduct(productId: string) {
-  const response = await fetch(`${API_URL}/managers/${productId}`, {
+  const response = await fetch(`${API_URL}/products/${productId}`, {
     method: "DELETE",
     headers: { ...authHeaders(), "content-type": "application/json" },
   });

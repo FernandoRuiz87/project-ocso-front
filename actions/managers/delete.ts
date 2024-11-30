@@ -13,6 +13,6 @@ export default async function deleteManager(managerId: string) {
 
   if (response.status === 200) {
     revalidateTag("dashboard:managers");
-    redirect("dashboard/managers");
+    redirect("/dashboard/managers");
   }
 }
